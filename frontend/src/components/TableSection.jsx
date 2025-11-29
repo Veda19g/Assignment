@@ -4,7 +4,7 @@ import textEditor from "../assets/text-editor.png";
 
 function TableSection() {
   return (
-    <section className="w-full px-6 md:px-20 py-20 bg-white">
+    <section  id="table-section" className="w-full px-6 md:px-20 py-20 bg-white">
 
       <h2 className="text-center text-[40px] md:text-[48px] font-bold text-[#1F1F2D] mb-16">
         How it works

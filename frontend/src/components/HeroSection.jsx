@@ -100,7 +100,7 @@ function HeroSection() {
               active:scale-[0.97]
             "
           >
-            Explore
+              <a href="#table-section">Explore</a>
           </button>
         </div>
       </div>
