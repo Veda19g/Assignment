@@ -22,17 +22,17 @@ function SeatTable(){
             <table className="w-full text-center border-collapse">
                 <thead className="bg-indigo-200">
                     <tr>
-                        <th className="p-3 border border-indigo-300 text-gray-700 font-semibold">Seat</th>
-                        <th className="p-3 border border-indigo-300 text-gray-700 font-semibold">Price</th>
-                        <th className="p-3 border border-indigo-300 text-gray-700 font-semibold">Status</th>
+                        <th className="p-3 border border-indigo-300 text-gray-700 font-bold">SEAT</th>
+                        <th className="p-3 border border-indigo-300 text-gray-700 font-bold">PRICE</th>
+                        <th className="p-3 border border-indigo-300 text-gray-700 font-bold">STATUS</th>
                     </tr>    
                 </thead>
                 <tbody>
                     {seats.map((item,index)=>(
                         <tr key={index} className="border border-indigo-200">
-                            <td className="p-3 border border-indigo-200">{item.seat_no}</td>
-                            <td className="p-3 border border-indigo-200">{item.price}</td>
-                            <td className="p-3 border border-indigo-200">{item.status}</td>
+                            <td className="p-3 border border-indigo-200 font-bold">{item.seat_no}</td>
+                            <td className="p-3 border border-indigo-200 font-bold">{item.price}</td>
+                            <td className="p-3 border border-indigo-200 font-bold">{item.status}</td>
                         </tr>
                     ))}
                 </tbody>
