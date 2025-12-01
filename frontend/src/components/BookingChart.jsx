@@ -7,10 +7,14 @@ function BookingChart() {
   const [dates, setDates] = useState([]);
   const [via, setVia] = useState([]);
   const [main, setMain] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchGraphData() {
       try {
+        setLoading(true);
+        setError(null);
         const response = await axios.get("https://viaje.ai/mainvia_api/");
         const data = response.data.data;
 
@@ -19,10 +23,25 @@ function BookingChart() {
         setMain(data.map((item) => item["2"]));
       } catch (error) {
         console.error("Error fetching graph data:", error);
+        setError("Failed to load graph data.");
+      } finally {
+        setLoading(false);
       }
     }
     fetchGraphData();
   }, []);
+   
+  if (loading) {
+    return <div>Loading chart...</div>;
+  }
+  
+  if (error) {
+    return <div className="w-full max-w-4xl mx-auto">
+      <div className="w-full bg-white shadow-xl rounded-xl p-3 sm:p-5 md:p-8 overflow-x-auto">
+    <p>{error}</p>
+      </div>
+    </div>;
+  }
 
   const options = {
     title: { text: "Via vs Main Booking" },

@@ -4,18 +4,42 @@ import { useEffect, useState } from "react"
 function SeatTable(){
 
     const [seats,setSeats]=useState([]);
-    
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
     useEffect(()=>{
         async function fetchSeats(){
             try{
+                setLoading(true);
+                setError(null);
                 const response=await axios.get("https://viaje.ai/seatinfo_api/");
-                setSeats(response.data.data);
+                if (response?.data?.data && Array.isArray(response.data.data)) {
+                  setSeats(response.data.data);
+                } else {
+                throw new Error("Invalid API response format");
+            }
             }catch(error){
                 console.error("Error fetching seats:",error);
+                setError("Failed to load seat data.");
+            } finally {
+                setLoading(false);
             }
         }
         fetchSeats();
     },[])
+
+    if (loading) {
+        return <div>Loading seat data...</div>;
+    }
+
+    if (error) {
+    return <div className="w-full max-w-4xl mx-auto">
+      <div className="w-full bg-white shadow-xl rounded-xl p-3 sm:p-5 md:p-8 overflow-x-auto">
+    <p>{error}</p>
+      </div>
+    </div>;
+  }
+
 
     return(
         <div className="w-full max-w-lg bg-white shadow-lg overflow-hidden">

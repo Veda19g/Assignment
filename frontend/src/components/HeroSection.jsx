@@ -5,7 +5,7 @@ function HeroSection() {
   return (
     <section className="relative w-full px-6 md:px-20 pt-10 pb-32 overflow-hidden">
 
-\      <div className="absolute inset-0 bg-gradient-to-br from-[#F7ECFF] to-[#E3F1FF] h-[70%] z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F7ECFF] to-[#E3F1FF] h-[70%] z-0 pointer-events-none" />
 
       <div className="absolute bottom-0 left-0 w-full h-[35%] bg-white z-0 pointer-events-none" />
 
